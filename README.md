@@ -10,14 +10,19 @@ sudo apt update
 sudo apt install -y golang iptables libnetfilter-queue-dev
 
 2
+
 git clone https://github.com/wet-cat/Sential-host.git
+
 cd Sential-host
+
 go mod tidy
 
 3
+
 go build -o sentinel ./cmd/sentinel
 
 4
+
 // set rules
 
 sudo ./scripts/setup_iptables.sh
@@ -25,15 +30,20 @@ sudo ./scripts/setup_iptables.sh
 // if you want to remove these rules. do this
 
 sudo iptables -D INPUT -j NFQUEUE --queue-num 0
+
 sudo iptables -D OUTPUT -j NFQUEUE --queue-num 0
 
 5
+
 sudo ./sentinel -safe=true
 
+
 to close it do this:
+
 press ctrl + c then run:
 
 sudo iptables -D INPUT -j NFQUEUE --queue-num 0
+
 sudo iptables -D OUTPUT -j NFQUEUE --queue-num 0
 
 

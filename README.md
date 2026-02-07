@@ -2,7 +2,7 @@
 Sential-host is an EDR style, local, open-source security agent for linux systems. we are only at our first commit. its pretty solid.
 
 # WARNING only run in safe mode. this is an early version.
-this will only log the malicious traffic but not stop it. we need to test unsafe mode further and develop it further as not safe mode can destroy networking. I do not take accountability for your incompetence with this tool.
+this will only log the malicious traffic but not stop it. we need to test unsafe mode further and develop it further as not safe mode can destroy networking. I do not take accountability for your incompetence with this tool. You are responsable for any damages done. USE SAFE MODE.
 
 it stays between the user networking and the kernel and reviews if your traffic makes sense. if it doesnt. it shuts it down. prevents cyberattacks as they happen.
 
@@ -18,5 +18,12 @@ This logs malicious traffic from skids and hackers. its not going to stop full g
 This project is licensed under the MIT License.  
 See the [LICENSE](LICENSE) file for details.
 
-# Credits
+# Contributors
 wet-cat(me)
+Open for more!
+
+
+# TODO.
+- make unsafe mode work without potential damages.
+- block malicious ip's successfully without networking damages.
+- 

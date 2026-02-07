@@ -19,8 +19,11 @@ go build -o sentinel ./cmd/sentinel
 
 4
 // set rules
+
 sudo ./scripts/setup_iptables.sh
+
 // if you want to remove these rules. do this
+
 sudo iptables -D INPUT -j NFQUEUE --queue-num 0
 sudo iptables -D OUTPUT -j NFQUEUE --queue-num 0
 

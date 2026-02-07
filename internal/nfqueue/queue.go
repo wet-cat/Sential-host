@@ -34,3 +34,4 @@ func Run(safe bool) error {
 
 	return nil
 }
+

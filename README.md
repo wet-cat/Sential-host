@@ -4,7 +4,35 @@ Sential-host is an EDR style, local, open-source security agent for linux system
 # WARNING only run in safe mode. this is an early version.
 this will only log the malicious traffic but not stop it. we need to test unsafe mode further and develop it further as not safe mode can destroy networking. I do not take accountability for your incompetence with this tool. You are responsable for any damages done. USE SAFE MODE.
 
-it stays between the user networking and the kernel and reviews if your traffic makes sense. if it doesnt. it shuts it down. prevents cyberattacks as they happen.
+# installation
+1 
+sudo apt update
+sudo apt install -y golang iptables libnetfilter-queue-dev
+
+2
+git clone https://github.com/wet-cat/Sential-host.git
+cd Sential-host
+go mod tidy
+
+3
+go build -o sentinel ./cmd/sentinel
+
+4
+// set rules
+sudo ./scripts/setup_iptables.sh
+// if you want to remove these rules. do this
+sudo iptables -D INPUT -j NFQUEUE --queue-num 0
+sudo iptables -D OUTPUT -j NFQUEUE --queue-num 0
+
+5
+sudo ./sentinel -safe=true
+
+to close it do this:
+press ctrl + c then run:
+
+sudo iptables -D INPUT -j NFQUEUE --queue-num 0
+sudo iptables -D OUTPUT -j NFQUEUE --queue-num 0
+
 
 # I focused on.
 - early detection of commodity malware and abuse

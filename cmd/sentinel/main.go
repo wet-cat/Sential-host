@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"os"
 	"os/signal"
 	"syscall"
@@ -10,9 +11,12 @@ import (
 )
 
 func main() {
-	logger.Info("starting sentinel-host")
+	safe := flag.Bool("safe", true, "enable logging-only mode; do not drop packets")
+	flag.Parse()
 
-	if err := nfqueue.Run(); err != nil {
+	logger.Info("starting sentinel-host (safe mode=" + boolToStr(*safe) + ")")
+
+	if err := nfqueue.Run(*safe); err != nil {
 		logger.Error(err.Error())
 		os.Exit(1)
 	}
@@ -22,4 +26,11 @@ func main() {
 	<-sig
 
 	logger.Info("shutdown requested, exiting")
+}
+
+func boolToStr(b bool) string {
+	if b {
+		return "true"
+	}
+	return "false"
 }

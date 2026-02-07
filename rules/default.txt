@@ -1,0 +1,6 @@
+# simple signatures
+powershell -enc
+/bin/bash -i
+nc -e
+wget http
+curl http

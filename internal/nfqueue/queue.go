@@ -8,7 +8,7 @@ import (
 	"sentinel/internal/logger"
 )
 
-func Run() error {
+func Run(safe bool) error {
 	q := nfq.NewNFQueue(0, 200, nfq.NF_DEFAULT_PACKET_SIZE)
 	if q == nil {
 		return errors.New("nfqueue init failed (are you root?)")
@@ -19,7 +19,17 @@ func Run() error {
 
 	for pkt := range q.GetPackets() {
 		verdict := engine.AnalyzePacket(pkt.Data)
-		pkt.SetVerdict(verdict)
+
+		// SAFE MODE: never drop packets
+		if safe {
+			pkt.SetVerdict(nfq.NF_ACCEPT)
+		} else {
+			if verdict == engine.DROP {
+				pkt.SetVerdict(nfq.NF_DROP)
+			} else {
+				pkt.SetVerdict(nfq.NF_ACCEPT)
+			}
+		}
 	}
 
 	return nil

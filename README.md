@@ -11,11 +11,11 @@ sudo apt install -y golang iptables libnetfilter-queue-dev
 
 2
 
-git clone https://github.com/wet-cat/Sential-host.git
+''git clone https://github.com/wet-cat/Sential-host.git
 
 cd Sential-host
 
-go mod tidy
+go mod tidy''
 
 3
 

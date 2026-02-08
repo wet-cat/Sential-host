@@ -7,6 +7,7 @@ this will only log the malicious traffic but not stop it. we need to test unsafe
 # installation
 # 1 
 ``sudo apt update``
+
 ``sudo apt install -y golang iptables libnetfilter-queue-dev``
 
 # 2
@@ -33,7 +34,7 @@ this will only log the malicious traffic but not stop it. we need to test unsafe
 
 ``sudo iptables -D OUTPUT -j NFQUEUE --queue-num 0``
 
-5
+# 5
 
 ``sudo ./sentinel -safe=true``
 

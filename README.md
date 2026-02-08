@@ -1,5 +1,5 @@
-# Sential-host
-Sential-host is an EDR style, local, open-source security agent for linux systems. we are only at our first commit. its pretty solid.
+# Sentinel-host
+Sentinel-host is an EDR style, local, open-source security agent for linux systems. we are only at our first commit. its pretty solid.
 
 # WARNING only run in safe mode. this is an early version.
 this will only log the malicious traffic but not stop it. we need to test unsafe mode further and develop it further as not safe mode can destroy networking. I do not take accountability for your incompetence with this tool. You are responsable for any damages done. USE SAFE MODE.
@@ -12,9 +12,9 @@ this will only log the malicious traffic but not stop it. we need to test unsafe
 
 # 2
 
-``git clone https://github.com/wet-cat/Sential-host.git``
+``git clone https://github.com/wet-cat/Sentinel-host.git``
 
-``cd Sential-host``
+``cd Sentinel-host``
 
 ``go mod tidy``
 
